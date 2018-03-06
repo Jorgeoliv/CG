@@ -1,0 +1,50 @@
+void esfera(float r, int camadas, int fatias){
+
+    float alpha = 2*M_PI / (float) fatias, beta = 2*M_PI / (float) camadas;
+
+    float x1, y1, z1, x2, y2, z2, x3, z3, x4,z4;
+
+    for(int i = 1; i<=fatias; i++){
+        y1 = r * sin(0);
+
+        x1 = r * cos(0) * sin(alpha);
+        z1 = r * cos(0) * cos(alpha);
+
+        x2 = r * cos(0) * sin(alpha * i);
+        z2 = r * cos(0) * cos(alpha * i);
+
+        for(int j = 1; j<=camadas; j++) {
+
+            y2 = r * sin(beta * j);
+
+            x3 = r * cos(beta * j) * sin(alpha);
+            z3 = r * cos(beta * j) * cos(alpha);
+
+            x4 = r * cos(beta * j) * sin(alpha * i);
+            z4 = r * cos(beta * j) * cos(alpha * i);
+
+
+            glBegin(GL_TRIANGLES);
+
+            glColor3f(float(j)/(float)camadas, (float)i/(float)fatias, 0.0f);
+
+            glVertex3f(x1, y1, z1);
+            glVertex3f(x2, y1, z2);
+            glVertex3f(x3, y2, z3);
+
+            glVertex3f(x3, y2, z3);
+            glVertex3f(x2, y1, z2);
+            glVertex3f(x4, y2, z4);
+
+            glEnd();
+
+            y1=y2;
+            x1 = x3;
+            x2 = x4;
+            z1 = z3;
+            z2 = z4;
+        }
+
+    }
+
+}
