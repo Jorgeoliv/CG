@@ -1,0 +1,78 @@
+void drawCube(float side, int divisions) {
+    float min = -side/2; // ponto mais negativo em x, y e z
+    float divisionSide = side/divisions; // comprimento do lado da divisão
+    float xi1=min, yi1=min, xj1=min, zj1=min;
+    float xi2, yi2, xj2, zj2;
+
+    for(int i=1; i<=divisions; i++){
+        xi2 = min+i*divisionSide;
+        yi2 = min+i*divisionSide;
+
+        for(int j=1; j<=divisions; j++){
+            xj2 = min+j*divisionSide;
+            zj2 = min+j*divisionSide;
+
+            glBegin(GL_TRIANGLES);
+            // base
+            // xi2 = xi1 + divSide, xj2 = xj1 + divSide
+            glColor3f(0.0f, 0.0f, 0.15);
+            glVertex3f(xi1, min, zj1);
+            glVertex3f(xi2, min, zj2);
+            glVertex3f(xi1, min, zj2);
+            glVertex3f(xi1, min, zj1);
+            glVertex3f(xi2, min, zj1);
+            glVertex3f(xi2, min, zj2);
+            // topo
+            glColor3f(0.0f, 0.0f, 1.0);
+            glVertex3f(xi2, -min, zj1);
+            glVertex3f(xi1, -min, zj2);
+            glVertex3f(xi2, -min, zj2);
+            glVertex3f(xi2, -min, zj1);
+            glVertex3f(xi1, -min, zj1);
+            glVertex3f(xi1, -min, zj2);
+
+            // laterais
+            // xj2 = xj1 + divSide, yi2 = yi1 + divSide, zj2 = zj1 + divSide
+            glColor3f(0.0f, 0.0f, 0.75*i/(float)divisions+0.20f);
+            glVertex3f(min, yi1, zj1);
+            glVertex3f(min, yi1, zj2);
+            glVertex3f(min, yi2, zj2);
+            glVertex3f(min, yi1, zj1);
+            glVertex3f(min, yi2, zj2);
+            glVertex3f(min, yi2, zj1);
+            glVertex3f(-min, yi1, zj1);
+            glVertex3f(-min, yi2, zj2);
+            glVertex3f(-min, yi1, zj2);
+            glVertex3f(-min, yi1, zj1);
+            glVertex3f(-min, yi2, zj1);
+            glVertex3f(-min, yi2, zj2);
+            glVertex3f(xj1, yi1, min);
+            glVertex3f(xj1, yi2, min);
+            glVertex3f(xj2, yi2, min);
+            glVertex3f(xj1, yi1, min);
+            glVertex3f(xj2, yi2, min);
+            glVertex3f(xj2, yi1, min);
+            glVertex3f(xj1, yi1, -min);
+            glVertex3f(xj2, yi2, -min);
+            glVertex3f(xj1, yi2, -min);
+            glVertex3f(xj1, yi1, -min);
+            glVertex3f(xj2, yi1, -min);
+            glVertex3f(xj2, yi2, -min);
+
+            glEnd();
+
+            xj1 = xj2; // equivalente a xj1 += divSide;
+            zj1 = zj2; // equivalente a zj1 += divSide
+        }
+        xj1 = min;
+        zj1 = min;
+        xi1 = xi2; // equivalente a xi1 += divSide
+        yi1 = yi2; // equivalente a zi1 += divSide
+    }
+}
+
+
+
+
+PS: Ainda tenho q ver melhor uma cena no fim do ciclo interior pq o jinho na brincadeira tirou aqueles xj1 = e xj2 = e desenhava os quadrados bem na msm xD
+PS2: è capaz de n tar mt percetivel todo o código por isso qq duvida disponham... daqui a 2h xD
