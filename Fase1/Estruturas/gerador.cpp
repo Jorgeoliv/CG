@@ -6,6 +6,86 @@
 using namespace std;
 
 
+
+vector<Ponto*> cone(float raio, float altura, int slices,int camadas){
+    vector<Ponto*> pontos;
+    float angulo = ((2*M_PI)/slices);
+    float xA,zA,xP,zP;
+
+    float alturaIntermedia = altura / camadas;
+    
+    for (int i=0; i < slices;i++) {
+
+
+        xA = raio * sin(i*angulo);
+        zA = raio * cos(i*angulo);
+
+
+        xP = raio * sin((i+1)*angulo);
+        zP = raio * cos((i+1)*angulo);
+
+        Ponto *p = new Ponto(0.0f, 0.0f,0.0f);
+        pontos.push_back(p);
+        
+        p = new Ponto(xP, 0.0f, zP);
+        pontos.push_back(p);
+        
+        p = new Ponto((xA, 0.0f, zA);
+        pontos.push_back(p);
+
+
+        for(int j=0; j < camadas; j++){
+
+            float yA = j*alturaIntermedia;
+            float yCima = (j+1)*alturaIntermedia;
+
+            float raioIntermedioCima = raio * ((altura-yCima) /altura);
+            float raioIntermedioBaixo = raio * ((altura-yA) /altura);
+
+            xA = raioIntermedioBaixo * sin(i*angulo);
+            zA = raioIntermedioBaixo * cos(i*angulo);
+
+
+            xP = raioIntermedioBaixo * sin((i+1)*angulo);
+            zP = raioIntermedioBaixo * cos((i+1)*angulo);
+
+            float xACima = raioIntermedioCima * sin(i*angulo);
+            float zACima = raioIntermedioCima * cos(i*angulo);
+
+            float xPCima = raioIntermedioCima * sin((i+1)*angulo);
+            float zPCima = raioIntermedioCima * cos((i+1)*angulo);
+
+
+            p = new Ponto(xA, yA, zA);
+            pontos.push_back(p);
+
+            p = new Ponto(xP,yA, zP);
+            pontos.push_back(p);
+            
+            p = new Ponto(xPCima,yCima, zPCima);
+            pontos.push_back(p);
+            
+            p = new Ponto(xA,yA, zA);
+            pontos.push_back(p);
+
+            p = new Ponto(xPCima,yCima, zPCima);
+            pontos.push_back(p);
+            
+            p = new Ponto(xAcima,yCima, zACima);
+            pontos.push_back(p);
+
+        }
+
+
+        glEnd();
+
+    }
+
+    
+    return pontos;
+    
+}
+
 vector<Ponto*> esfera(int raio, float fatias, float camadas){
 
     float alpha = (2*M_PI) / (float) fatias, beta = (M_PI) / (float) camadas;
