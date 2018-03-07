@@ -1,0 +1,66 @@
+void drawCone(float raio, float altura, int slices,int camadas){
+
+    float angulo = ((2*M_PI)/slices);
+    float xA,zA,xP,zP;
+
+
+
+    float alturaIntermedia = altura / camadas;
+    
+    for (int i=0; i < slices;i++) {
+
+
+        xA = raio * sin(i*angulo);
+        zA = raio * cos(i*angulo);
+
+
+        xP = raio * sin((i+1)*angulo);
+        zP = raio * cos((i+1)*angulo);
+
+        glBegin(GL_TRIANGLES);
+
+        glColor3f(1,1,1);
+
+        glVertex3f(0.0f, 0.0f, 0.0f);
+        glVertex3f(xP, 0.0f, zP);
+        glVertex3f(xA, 0.0f, zA);
+
+        for(int j=0; j < camadas; j++){
+
+            float yA = j*alturaIntermedia;
+            float yCima = (j+1)*alturaIntermedia;
+
+            float raioIntermedioCima = raio * ((altura-yCima) /altura);
+            float raioIntermedioBaixo = raio * ((altura-yA) /altura);
+
+            xA = raioIntermedioBaixo * sin(i*angulo);
+            zA = raioIntermedioBaixo * cos(i*angulo);
+
+
+            xP = raioIntermedioBaixo * sin((i+1)*angulo);
+            zP = raioIntermedioBaixo * cos((i+1)*angulo);
+
+            float xACima = raioIntermedioCima * sin(i*angulo);
+            float zACima = raioIntermedioCima * cos(i*angulo);
+
+            float xPCima = raioIntermedioCima * sin((i+1)*angulo);
+            float zPCima = raioIntermedioCima * cos((i+1)*angulo);
+
+            glVertex3f(xA,yA,zA);
+            glVertex3f(xP,yA,zP);
+            glVertex3f(xPCima,yCima,zPCima);
+
+            glVertex3f(xA,yA,zA);
+            glVertex3f(xPCima,yCima,zPCima);
+            glVertex3f(xACima,yCima,zACima);
+
+
+
+        }
+
+
+        glEnd();
+
+    }
+
+}
