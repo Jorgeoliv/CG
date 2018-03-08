@@ -86,7 +86,7 @@ vector<Ponto*> cone(float raio, float altura, int slices,int camadas){
     
 }
 
-vector<Ponto*> esfera(int raio, float fatias, float camadas){
+vector<Ponto*> esfera(float raio, int fatias, int camadas){
 
     float alpha = (2*M_PI) / (float) fatias, beta = (M_PI) / (float) camadas;
     float x1, y1, z1, x2, y2, z2, x3, z3, x4,z4;
@@ -185,17 +185,17 @@ int main (int argc, char** argv) {
   		pontos = plane(lado);
   		break;
   	}
-    case 2:{
+    case 4:{
       myfile.open(argv[5]);
 
       string raio(argv[2]);
-      int r = stoi(raio); // Nao podia fazer logo stof(argv[2])
+      float r = stof(raio); // Nao podia fazer logo stof(argv[2])
 
       string fatias(argv[3]);
-      float f = stof(fatias);
+      int f = stoi(fatias);
       
       string camadas(argv[4]);
-      float c = stof(camadas);
+      int c = stoi(camadas);
 
       pontos = esfera(r, f, c);
       break;
