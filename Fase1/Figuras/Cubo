@@ -1,78 +1,79 @@
 void drawCube(float side, int divisions) {
-    float min = -side/2; // ponto mais negativo em x, y e z
-    float divisionSide = side/divisions; // comprimento do lado da divisão
-    float xi1=min, yi1=min, xj1=min, zj1=min;
-    float xi2, yi2, xj2, zj2;
+    float divisionSide = side/divisions;        // comprimento do lado de cada divisão
+    float min = -side/2;                        // valor mínimo que a variável pode tomar
+    float max = -min;                           // valor máximo que a variável pode tomar
+    float x1i=min, y1i=min, x1j=min, z1j=min;   // i/j -> indicador do ciclo em que vão iterar (interno ou externo)
+    float x2i, y2i, x2j, z2j;                   // a1/a2 -> indicador quem está antes/depois relativamente ao eixo a.
+                                                // por exemplo x1 está imediatamente antes de x2 relativamente ao eixo x
+                                                // por exemplo z1 está imediatamente antes de z2 relativamente ao eixo z
+                                                // no fim do ciclo x1 toma o valor de x2 e x2 recebe o valor imediatamente depois
 
     for(int i=1; i<=divisions; i++){
-        xi2 = min+i*divisionSide;
-        yi2 = min+i*divisionSide;
+        x2i = min + i*divisionSide;
+        y2i = min + i*divisionSide;
 
         for(int j=1; j<=divisions; j++){
-            xj2 = min+j*divisionSide;
-            zj2 = min+j*divisionSide;
+            x2j = min + j*divisionSide;
+            z2j = min + j*divisionSide;
 
             glBegin(GL_TRIANGLES);
+            glColor3f(0.0f, 0.0f, 1.0f);
+
             // base
-            // xi2 = xi1 + divSide, xj2 = xj1 + divSide
-            glColor3f(0.0f, 0.0f, 0.15);
-            glVertex3f(xi1, min, zj1);
-            glVertex3f(xi2, min, zj2);
-            glVertex3f(xi1, min, zj2);
-            glVertex3f(xi1, min, zj1);
-            glVertex3f(xi2, min, zj1);
-            glVertex3f(xi2, min, zj2);
+            // x2i <=> x1i + divSide, x2j <=> x1j + divSide
+            glVertex3f(x1i, min, z1j);
+            glVertex3f(x2i, min, z2j);
+            glVertex3f(x1i, min, z2j);
+            glVertex3f(x1i, min, z1j);
+            glVertex3f(x2i, min, z1j);
+            glVertex3f(x2i, min, z2j);
+
             // topo
-            glColor3f(0.0f, 0.0f, 1.0);
-            glVertex3f(xi2, -min, zj1);
-            glVertex3f(xi1, -min, zj2);
-            glVertex3f(xi2, -min, zj2);
-            glVertex3f(xi2, -min, zj1);
-            glVertex3f(xi1, -min, zj1);
-            glVertex3f(xi1, -min, zj2);
+            glVertex3f(x1i, max, z1j);
+            glVertex3f(x1i, max, z2j);
+            glVertex3f(x2i, max, z2j);
+            glVertex3f(x1i, max, z1j);
+            glVertex3f(x2i, max, z2j);
+            glVertex3f(x2i, max, z1j);
 
             // laterais
-            // xj2 = xj1 + divSide, yi2 = yi1 + divSide, zj2 = zj1 + divSide
-            glColor3f(0.0f, 0.0f, 0.75*i/(float)divisions+0.20f);
-            glVertex3f(min, yi1, zj1);
-            glVertex3f(min, yi1, zj2);
-            glVertex3f(min, yi2, zj2);
-            glVertex3f(min, yi1, zj1);
-            glVertex3f(min, yi2, zj2);
-            glVertex3f(min, yi2, zj1);
-            glVertex3f(-min, yi1, zj1);
-            glVertex3f(-min, yi2, zj2);
-            glVertex3f(-min, yi1, zj2);
-            glVertex3f(-min, yi1, zj1);
-            glVertex3f(-min, yi2, zj1);
-            glVertex3f(-min, yi2, zj2);
-            glVertex3f(xj1, yi1, min);
-            glVertex3f(xj1, yi2, min);
-            glVertex3f(xj2, yi2, min);
-            glVertex3f(xj1, yi1, min);
-            glVertex3f(xj2, yi2, min);
-            glVertex3f(xj2, yi1, min);
-            glVertex3f(xj1, yi1, -min);
-            glVertex3f(xj2, yi2, -min);
-            glVertex3f(xj1, yi2, -min);
-            glVertex3f(xj1, yi1, -min);
-            glVertex3f(xj2, yi1, -min);
-            glVertex3f(xj2, yi2, -min);
+            // x2j <=> x1j + divSide, y2i <=> y1i + divSide, z2j <=> z1j + divSide
+            glVertex3f(min, y1i, z1j);
+            glVertex3f(min, y1i, z2j);
+            glVertex3f(min, y2i, z2j);
+            glVertex3f(min, y1i, z1j);
+            glVertex3f(min, y2i, z2j);
+            glVertex3f(min, y2i, z1j);
+
+            glVertex3f(max, y1i, z1j);
+            glVertex3f(max, y2i, z1j);
+            glVertex3f(max, y2i, z2j);
+            glVertex3f(max, y1i, z1j);
+            glVertex3f(max, y2i, z2j);
+            glVertex3f(max, y1i, z2j);
+
+            glVertex3f(x1j, y1i, min);
+            glVertex3f(x1j, y2i, min);
+            glVertex3f(x2j, y2i, min);
+            glVertex3f(x1j, y1i, min);
+            glVertex3f(x2j, y2i, min);
+            glVertex3f(x2j, y1i, min);
+
+            glVertex3f(x1j, y1i, max);
+            glVertex3f(x2j, y1i, max);
+            glVertex3f(x2j, y2i, max);
+            glVertex3f(x1j, y1i, max);
+            glVertex3f(x2j, y2i, max);
+            glVertex3f(x1j, y2i, max);
 
             glEnd();
 
-            xj1 = xj2; // equivalente a xj1 += divSide;
-            zj1 = zj2; // equivalente a zj1 += divSide
+            x1j = x2j; // equivalente a x1j += divSide;
+            z1j = z2j; // equivalente a z1j += divSide
         }
-        xj1 = min;
-        zj1 = min;
-        xi1 = xi2; // equivalente a xi1 += divSide
-        yi1 = yi2; // equivalente a zi1 += divSide
+        x1j = min; // voltar a iniciar variável
+        z1j = min; // voltar a iniciar variável
+        x1i = x2i; // equivalente a x1i += divSide
+        y1i = y2i; // equivalente a zi1 += divSide
     }
 }
-
-
-
-
-PS: Ainda tenho q ver melhor uma cena no fim do ciclo interior pq o jinho na brincadeira tirou aqueles xj1 = e xj2 = e desenhava os quadrados bem na msm xD
-PS2: è capaz de n tar mt percetivel todo o código por isso qq duvida disponham... daqui a 2h xD
