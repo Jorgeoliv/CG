@@ -1,0 +1,10 @@
+No presente relatório apresentamos a explicação da primeira fase de um projeto que tem como principal objetivo a concepção de um sistema solar, apresentado como um modelo 3D. Esta fase contempla a base do projeto, as respetivas formas geométricas. Na realização do projeto utilizamos a ferramenta GLUT para a apresentação dos diversos componentes. Nesta fase implementamos um programa que utiliza algoritmos para gerar cada uma das seguintes figuras:
+
+    Plano:
+    Cubo:
+    Cone:
+    Esfera:
+    
+Para além deste, implementamos também um programa que lê os ficheiros com os pontos relativos às figuras, previamente criados, e desenha essas figuras, através dos pontos lidos, com o auxílio da ferramenta mencionada acima.
+
+//QUEM TIVER INSPIRADO QUE MELHORE
