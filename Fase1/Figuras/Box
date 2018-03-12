@@ -1,0 +1,66 @@
+void box(float sideX, float sideY, float sideZ, int divisions) {
+    const float deltaX = sideX/divisions;           // comprimento do lado de cada divisão em X
+    const float deltaY = sideY/divisions;           // comprimento do lado de cada divisão em Y
+    const float deltaZ = sideZ/divisions;           // comprimento do lado de cada divisão em Z
+    const float maxX = sideX/2, minX = -maxX;       // valor máximo/mínimo que a variável em X pode tomar
+    const float maxY = sideY/2, minY = -maxY;       // valor máximo/mínimo que a variável em Y pode tomar
+    const float maxZ = sideZ/2, minZ = -maxZ;       // valor máximo/mínimo que a variável em Z pode tomar
+
+    for(int i=0; i<divisions; i++){
+
+        for(int j=0; j<divisions; j++){
+
+            // Invariante de ciclo: i2 <=> i1 + divSide e j2 <=> j1 + divSide
+
+            glBegin(GL_TRIANGLES);
+            glColor3f(0.0f, 0.0f, 1.0f);
+
+            // base
+            glVertex3f(minX + i*deltaX, minY, minZ + j*deltaZ);
+            glVertex3f(minX + (i+1)*deltaX, minY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX + i*deltaX, minY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX + i*deltaX, minY, minZ + j*deltaZ);
+            glVertex3f(minX + (i+1)*deltaX, minY, minZ + j*deltaZ);
+            glVertex3f(minX + (i+1)*deltaX, minY, minZ + (j+1)*deltaZ);
+
+            // topo
+            glVertex3f(minX + i*deltaX, maxY, minZ + j*deltaZ);
+            glVertex3f(minX + i*deltaX, maxY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX + (i+1)*deltaX, maxY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX + i*deltaX, maxY, minZ + j*deltaZ);
+            glVertex3f(minX + (i+1)*deltaX, maxY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX + (i+1)*deltaX, maxY, minZ + j*deltaZ);
+
+            // laterais
+            glVertex3f(minX, minY + i*deltaY, minZ + j*deltaZ);
+            glVertex3f(minX, minY + i*deltaY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX, minY + (i+1)*deltaY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX, minY + i*deltaY, minZ + j*deltaZ);
+            glVertex3f(minX, minY + (i+1)*deltaY, minZ + (j+1)*deltaZ);
+            glVertex3f(minX, minY + (i+1)*deltaY, minZ + j*deltaZ);
+
+            glVertex3f(maxX, minY + i*deltaY, minZ + j*deltaZ);
+            glVertex3f(maxX, minY + (i+1)*deltaY, minZ + j*deltaZ);
+            glVertex3f(maxX, minY + (i+1)*deltaY, minZ + (j+1)*deltaZ);
+            glVertex3f(maxX, minY + i*deltaY, minZ + j*deltaZ);
+            glVertex3f(maxX, minY + (i+1)*deltaY, minZ + (j+1)*deltaZ);
+            glVertex3f(maxX, minY + i*deltaY, minZ + (j+1)*deltaZ);
+
+            glVertex3f(minX + j*deltaX, minY + i*deltaY, minZ);
+            glVertex3f(minX + j*deltaX, minY + (i+1)*deltaY, minZ);
+            glVertex3f(minX + (j+1)*deltaX, minY + (i+1)*deltaY, minZ);
+            glVertex3f(minX + j*deltaX, minY + i*deltaY, minZ);
+            glVertex3f(minX + (j+1)*deltaX, minY + (i+1)*deltaY, minZ);
+            glVertex3f(minX + (j+1)*deltaX, minY + i*deltaY, minZ);
+
+            glVertex3f(minX + j*deltaX, minY + i*deltaY, maxZ);
+            glVertex3f(minX + (j+1)*deltaX, minY + i*deltaY, maxZ);
+            glVertex3f(minX + (j+1)*deltaX, minY + (i+1)*deltaY, maxZ);
+            glVertex3f(minX + j*deltaX, minY + i*deltaY, maxZ);
+            glVertex3f(minX + (j+1)*deltaX, minY + (i+1)*deltaY, maxZ);
+            glVertex3f(minX + j*deltaX, minY + (i+1)*deltaY, maxZ);
+
+            glEnd();
+        }
+    }
+}
