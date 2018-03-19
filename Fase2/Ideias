@@ -1,0 +1,5 @@
+---------------------------->CG -> 2 Fase: <--------------------------------
+
+precisamos de operacaoes (Rotacao,Escala,Translacao), podemos ter uma classe abstracta Operação e as suas subclasses seriam Rotacao/Escala/Translacao, realiza uma das operações. 
+
+precisamos de grupos, pelo que também podemos ter uma classe grupo, que contém um conjunto de operações e de ficheiros.
