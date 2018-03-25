@@ -2,18 +2,18 @@ Necessário fazer:
 
 
 1- 
-parsing do xml, e gerar a forma para mostrar a figura (se quiserem posso fazer, não é difícil e depois também ajudo no resto)
+parsing do xml, e gerar a forma para mostrar a figura (se quiserem posso fazer, não é difícil e depois também ajudo no resto) -> José, depois ajuda no resto
 
 2-
-ver como são as dimensões dos planetas e como vamos adaptá-las à esccala do modelo
+ver como são as dimensões dos planetas e como vamos adaptá-las à esccala do modelo -> Peixoto
 gerar as figuras com a dimensão da escala
 
 3-
-ver onde são colocados os planetas
+ver onde são colocados os planetas -> Carlos
 gerar os modelos xml para colocar cada um dos planetas
 
 4-
-fazer gerador para torus (para os anéis)
+fazer gerador para torus (para os anéis) -> Jorginho, vai ter ajuda
 fazer gerador para um foguetão -> era fixe, se der tempo
 fazer aliens
 
