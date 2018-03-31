@@ -1,0 +1,46 @@
+void torus(float raioTubo, float raioAnel, int fatias, int camadas){
+
+
+    float alpha = 2*M_PI / fatias;
+    float beta = 2*M_PI / camadas;
+
+    float x1, x2, x3, x4, y1, y2, z1, z2, y3, y4;
+
+    float raioMaior = raioAnel;
+
+    for(int i = 0; i<fatias; i++){
+        for(int j = 0; j<camadas; j++){
+
+
+            z1 = raioTubo*sin(beta*j);
+            z2 = raioTubo*sin(beta*(j+1));
+
+            y1 = (raioMaior + raioTubo*cos(beta*j))*sin(alpha*i);
+            y2 = (raioMaior + raioTubo*cos(beta*j))*sin(alpha*(i+1));
+            y3 = (raioMaior + raioTubo*cos(beta*(j+1)))*sin(alpha*i);
+            y4 = (raioMaior + raioTubo*cos(beta*(j+1)))*sin(alpha*(i+1));
+
+            x1 = (raioMaior + raioTubo*cos(beta*j))*cos(alpha*i);
+            x2 = (raioMaior + raioTubo*cos(beta*j))*cos(alpha*(i+1));
+            x3 = (raioMaior + raioTubo*cos(beta*(j+1)))*cos(alpha*i);
+            x4 = (raioMaior + raioTubo*cos(beta*(j+1)))*cos(alpha*(i+1));
+
+            glBegin(GL_TRIANGLES);
+
+                glVertex3f(x1, y1, z1);
+                glVertex3f(x2, y2, z1);
+                glVertex3f(x3, y3, z2);
+
+                glVertex3f(x3, y3, z2);
+                glVertex3f(x2, y2, z1);
+                glVertex3f(x4, y4, z2);
+
+            glEnd();
+
+
+
+
+        }
+    }
+
+}
