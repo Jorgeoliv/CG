@@ -1,6 +1,7 @@
 void torus(float raioTubo, float raioAnel, int fatias, int camadas){
 
-
+    //torus(1,2,100,100);
+    
     float alpha = 2*M_PI / fatias;
     float beta = 2*M_PI / camadas;
 
