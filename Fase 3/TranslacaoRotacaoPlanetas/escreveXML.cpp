@@ -52,7 +52,7 @@ void criaMercurio(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //Translação
-	ficheiro << separador << "\t" << "<translate time=\"" << 50 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 40 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_MER;
@@ -80,7 +80,7 @@ void criaVenus(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //Translaçao
-	ficheiro << separador << "\t" << "<translate time=\"" << 127.273 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 50 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_VEN;
@@ -113,7 +113,7 @@ void criaTerra(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //Translaçao
-	ficheiro << separador << "\t" << "<translate time=\"" << 207.386 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 60 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_TER;
@@ -144,7 +144,7 @@ void criaMarte(string separador){
 	ficheiro << separador << "<group>" << endl;
 
 //Translaçao
-	ficheiro << separador << "\t" << "<translate time=\"" << 390.341 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 90 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_MAR;
@@ -223,7 +223,7 @@ void criaJupiter(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //Translaçao
-	ficheiro << separador << "\t" << "<translate time=\"" << 2460.23 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 150 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_JUP;
@@ -269,7 +269,7 @@ void criaSaturno(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //Translação
-	ficheiro << separador << "\t" << "<translate time=\"" << 6117.9 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 200 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_SAT;
@@ -305,7 +305,7 @@ void criaUrano(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //Translação
-	ficheiro << separador << "\t" << "<translate time=\"" << 34218.8 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 225 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_URA;
@@ -337,7 +337,7 @@ void criaNeptuno(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 //translaçao
-	ficheiro << separador << "\t" << "<translate time=\"" << 17422.7 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 250 << "\">"  << endl;
 	float x,z;
 	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL+DIST_NEP;
