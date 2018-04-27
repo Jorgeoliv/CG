@@ -107,6 +107,36 @@ void criaVenus(string separador){
 	ficheiro << separador << "</group>" << endl;
 }
 
+void criaLua(string separador){
+	ficheiro << separador << "<!--LUA-->" << endl;
+// Inicio do grupo
+	ficheiro << separador << "<group>" << endl;
+//Translaçao
+	ficheiro << separador << "\t" << "<translate time=\"" << 25 << "\">"  << endl;
+	float x,z;
+	float alpha = 2*M_PI / PONTOS_TRANS;
+	float raio = RAIO_TER*3;
+	for(int i=0; i<10; i++){
+		x = cos(alpha*i) * raio;
+		z = sin(alpha*i) * raio;
+		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << 0 << "\" Z=\"" << z << "\" />"  << endl;
+	}
+	ficheiro << separador << "\t" << "</translate>" << endl;
+
+//Rotação em torno de si proprio
+	ficheiro << separador << "\t" << "<rotate time=\"" << 30 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
+
+//Transformacoes geometricas
+	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_TER) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
+	ficheiro << separador << "\t" << "<scale X=\"" << 0.30 << "\" Y=\"" << 0.30 << "\" Z=\"" << 0.30 << "\" />" << endl;
+//Modelos
+	ficheiro << separador << "\t" << "<models>" << endl;
+	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
+	ficheiro << separador << "\t" << "</models>" << endl;
+// Fim do grupo
+	ficheiro << separador << "</group>" << endl;
+}
+
 
 void criaTerra(string separador){
 	ficheiro << separador << "<!--TERRA-->" << endl;
@@ -135,7 +165,9 @@ void criaTerra(string separador){
 	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
 	ficheiro << separador << "\t" << "</models>" << endl;
 // Fim do grupo
+	criaLua(separador);
 	ficheiro << separador << "</group>" << endl;
+
 }
 
 void criaMarte(string separador){
@@ -195,16 +227,29 @@ void criaCintura(string separador){
         rr = rand() * 3.0/ RAND_MAX;
         alpha = rand() * 6.28 / RAND_MAX;
         dim = 0.02 + rand() * 0.04 / RAND_MAX;
+        int j = rand() % 10;
+     
 
-        x = cos(alpha) * (rr + r);
-        y = -1 + rand() * 2.0 / RAND_MAX;
-        z = sin(alpha) * (rr + r);
+        //x = cos(alpha) * (rr + r);
+        //y = -1 + rand() * 2.0 / RAND_MAX;
+        //z = sin(alpha) * (rr + r);
 
         ficheiro << separador << "\t" << "<!--ASTEROIDE-->" << endl;
 		// Inicio do grupo
 			ficheiro << separador << "\t" << "<group>" << endl;
 		//Transformacoes geometricas
-			ficheiro << separador << "\t\t" << "<translate X=\"" << x << "\" Y=\"" << y << "\" Z=\"" << z << "\" />" << endl;
+			ficheiro << separador << "\t" << "<translate time=\"" << rand()%100+50 << "\">"  << endl;
+			float x,z;
+			float alpha = 2*M_PI / PONTOS_TRANS;
+			float raio = RAIO_SOL+DIST_JUP;
+			for(int i=0; i<PONTOS_TRANS; i++){
+				x = cos(alpha*(((i+j)%PONTOS_TRANS))) * (rr + r);
+				y = -1 + rand() * 2.0 / RAND_MAX;
+				z = sin(alpha*(((i+j)%PONTOS_TRANS))) * (rr + r);
+				ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << y << "\" Z=\"" << z << "\" />"  << endl;
+			}
+			ficheiro << separador << "\t" << "</translate>" << endl;
+			//ficheiro << separador << "\t\t" << "<translate X=\"" << x << "\" Y=\"" << y << "\" Z=\"" << z << "\" />" << endl;
 			ficheiro << separador << "\t\t" << "<scale X=\"" << dim << "\" Y=\"" << dim << "\" Z=\"" << dim << "\" />" << endl;
 		//Modelos
 		ficheiro << separador << "\t\t" << "<models>" << endl;
@@ -422,19 +467,20 @@ void criaCometa(string separador){
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
 
-	ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_JUP) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
+	ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_SAT) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 
+	ficheiro << separador << "\t\t\t<rotate angle=\"-135\" axisX=\"1\" axisY=\"0\" axisZ=\"0\" />" << endl;
 //Translaçao
 	ficheiro << separador << "\t" << "<translate time=\"" << 100 << "\">"  << endl;
-	float x,y,a,b;
-	a = RAIO_SOL*2 + DIST_JUP + DIST_MER*3/4;
-	b = DIST_JUP*2/3;
+	float x,y;
+	//a = RAIO_SOL*2 + DIST_JUP + DIST_MER*3/4;
+	//b = DIST_JUP*2/3;
 	float alpha = 2*M_PI / 200;
-	float raio = RAIO_SOL+DIST_JUP;
+	float raio = RAIO_SOL*2 + DIST_SAT + DIST_MER*3/4;
 	for(int i=0; i<200; i++){
-		raio = a*b / ( sqrt( (a*a*sin(alpha*i)*sin(alpha*i)) + (b*b*cos(alpha*i)*cos(alpha*i)) ) );
+		//raio = a*b / ( sqrt( (a*a*sin(alpha*i)*sin(alpha*i)) + (b*b*cos(alpha*i)*cos(alpha*i)) ) );
 		x = cos(alpha*i) * raio;
-		y = sin(alpha*i) * raio;
+		y = sin(alpha*i) * 0.35 * raio;
 		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << y << "\" Z=\"" << 0 << "\" />"  << endl;
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
