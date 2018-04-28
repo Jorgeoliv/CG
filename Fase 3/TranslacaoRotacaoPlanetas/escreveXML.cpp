@@ -39,6 +39,7 @@ void criaSol(string separador){
 	ficheiro << separador << "<group>" << endl;
 //Transformacoes geometricas
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_SOL << "\" Y=\"" << RAIO_SOL << "\" Z=\"" << RAIO_SOL << "\" />" << endl;
+	ficheiro << separador << "\t" << "<rotate time=\"" << 60 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
 	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
@@ -91,12 +92,12 @@ void criaVenus(string separador){
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
 
-	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
+	//int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 80 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
+	//ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_VEN) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_VEN << "\" Y=\"" << RAIO_VEN << "\" Z=\"" << RAIO_VEN << "\" />" << endl;
 //Modelos
@@ -139,6 +140,7 @@ void criaLua(string separador){
 
 
 void criaTerra(string separador){
+	string separador2 = separador;
 	ficheiro << separador << "<!--TERRA-->" << endl;
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
@@ -153,7 +155,9 @@ void criaTerra(string separador){
 		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << 0 << "\" Z=\"" << z << "\" />"  << endl;
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
-
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 23 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	separador = separador + "\t";
+	ficheiro << separador << "<group>" << endl;
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 55 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
@@ -168,9 +172,14 @@ void criaTerra(string separador){
 	criaLua(separador);
 	ficheiro << separador << "</group>" << endl;
 
+	separador = separador2;
+
+	ficheiro << separador << "</group>" << endl;
+
 }
 
 void criaMarte(string separador){
+	string separador2 = separador;
 	ficheiro << separador << "<!--MARTE-->" << endl;
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
@@ -187,20 +196,29 @@ void criaMarte(string separador){
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
 
-	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
+
+
+//	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 25 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	separador = separador + "\t";
+	ficheiro << separador << "<group>" << endl;
 
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 60 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
-//Transformacoes geometricas
+/*//Transformacoes geometricas
 	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_MAR) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
+*/	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_MAR) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_MAR << "\" Y=\"" << RAIO_MAR << "\" Z=\"" << RAIO_MAR << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
 	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
 	ficheiro << separador << "\t" << "</models>" << endl;
 // Fim do grupo
+	ficheiro << separador << "</group>" << endl;
+
+	separador = separador2;
+
 	ficheiro << separador << "</group>" << endl;
 }
 
@@ -239,9 +257,9 @@ void criaCintura(string separador){
 			ficheiro << separador << "\t" << "<group>" << endl;
 		//Transformacoes geometricas
 			ficheiro << separador << "\t" << "<translate time=\"" << rand()%100+50 << "\">"  << endl;
-			float x,z;
-			float alpha = 2*M_PI / PONTOS_TRANS;
-			float raio = RAIO_SOL+DIST_JUP;
+			//float x,z;
+			/*float*/ alpha = 2*M_PI / PONTOS_TRANS;
+			//float raio = RAIO_SOL+DIST_JUP;
 			for(int i=0; i<PONTOS_TRANS; i++){
 				x = cos(alpha*(((i+j)%PONTOS_TRANS))) * (rr + r);
 				y = -1 + rand() * 2.0 / RAND_MAX;
@@ -264,6 +282,8 @@ void criaCintura(string separador){
 }
 
 void criaJupiter(string separador){
+	string separador2 = separador;
+
 	ficheiro << separador << "<!--JUPITER-->" << endl;
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
@@ -278,6 +298,11 @@ void criaJupiter(string separador){
 		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << 0 << "\" Z=\"" << z << "\" />"  << endl;
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
+
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 3 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	separador = separador + "\t";
+	ficheiro << separador << "<group>" << endl;
+
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 45 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
@@ -289,6 +314,11 @@ void criaJupiter(string separador){
 	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
 	ficheiro << separador << "\t" << "</models>" << endl;
 // Fim do grupo
+	ficheiro << separador << "</group>" << endl;
+
+
+	separador = separador2;
+
 	ficheiro << separador << "</group>" << endl;
 }
 
@@ -310,6 +340,8 @@ void criaAneisSaturno(string separador){
 }
 
 void criaSaturno(string separador){
+	string separador2 = separador;
+
 	ficheiro << separador << "<!--SATURNO-->" << endl;
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
@@ -324,6 +356,12 @@ void criaSaturno(string separador){
 		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << 0 << "\" Z=\"" << z << "\" />"  << endl;
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
+
+
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 27 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	separador = separador + "\t";
+	ficheiro << separador << "<group>" << endl;
+
 //Transformacoes geometricas
 	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_SAT) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	//PRECISEI DE CRIAR UM NOVO GRUPO SO PARA RODAR SATURNO
@@ -344,10 +382,17 @@ void criaSaturno(string separador){
 	criaAneisSaturno(separador + "\t");
 // Fim do grupo
 	ficheiro << separador << "</group>" << endl;
+
+
+	separador = separador2;
+
+	ficheiro << separador << "</group>" << endl;
 }
 
 
 void criaUrano(string separador){
+	string separador2 = separador;
+
 	ficheiro << separador << "<!--URANO-->" << endl;
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
@@ -363,12 +408,17 @@ void criaUrano(string separador){
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
 
-	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 98 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	separador = separador + "\t";
+	ficheiro << separador << "<group>" << endl;
+
+
+	//int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 35 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
+	//ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_URA) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_URA << "\" Y=\"" << RAIO_URA << "\" Z=\"" << RAIO_URA << "\" />" << endl;
 //Modelos
@@ -377,9 +427,16 @@ void criaUrano(string separador){
 	ficheiro << separador << "\t" << "</models>" << endl;
 // Fim do grupo
 	ficheiro << separador << "</group>" << endl;
+
+
+	separador = separador2;
+
+	ficheiro << separador << "</group>" << endl;
 }
 
 void criaNeptuno(string separador){
+	string separador2 = separador;
+
 	ficheiro << separador << "<!--NEPTUNO-->" << endl;
 // Inicio do grupo
 	ficheiro << separador << "<group>" << endl;
@@ -394,14 +451,20 @@ void criaNeptuno(string separador){
 		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << 0 << "\" Z=\"" << z << "\" />"  << endl;
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
+
+
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 28 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	separador = separador + "\t";
+	ficheiro << separador << "<group>" << endl;
+
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 30 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 
-	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
+//	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
 
 //Transformacoes geometricas
-	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
+//	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_NEP) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_NEP << "\" Y=\"" << RAIO_NEP << "\" Z=\"" << RAIO_NEP << "\" />" << endl;
 //Modelos
@@ -409,6 +472,11 @@ void criaNeptuno(string separador){
 	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
 	ficheiro << separador << "\t" << "</models>" << endl;
 // Fim do grupo
+	ficheiro << separador << "</group>" << endl;
+
+
+	separador = separador2;
+
 	ficheiro << separador << "</group>" << endl;
 }
 
@@ -509,7 +577,7 @@ void criaFicheiro(){
 	criaVenus(separador);
 	criaTerra(separador);
 	criaMarte(separador);
-	criaCintura(separador);
+	//criaCintura(separador);
 	criaJupiter(separador);
 	criaSaturno(separador);
 	criaUrano(separador);
@@ -532,5 +600,6 @@ int main(){
 	criaFicheiro();
 
 	ficheiro.close();
+
 
 }
