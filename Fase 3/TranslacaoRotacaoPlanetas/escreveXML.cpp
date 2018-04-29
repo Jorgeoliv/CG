@@ -66,7 +66,6 @@ void criaMercurio(string separador){
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 40 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_MER) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_MER << "\" Y=\"" << RAIO_MER << "\" Z=\"" << RAIO_MER << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -91,14 +90,10 @@ void criaVenus(string separador){
 		ficheiro << separador << "\t\t" << "<point X=\"" << x << "\" Y=\"" << 0 << "\" Z=\"" << z << "\" />"  << endl;
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
-
-	//int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 60 << "\" axisX=\"" << 0 << "\" axisY=\"" << -1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_VEN) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_VEN << "\" Y=\"" << RAIO_VEN << "\" Z=\"" << RAIO_VEN << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -128,7 +123,6 @@ void criaLua(string separador){
 	ficheiro << separador << "\t" << "<rotate time=\"" << 20 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_TER) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << 0.30 << "\" Y=\"" << 0.30 << "\" Z=\"" << 0.30 << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -162,7 +156,6 @@ void criaTerra(string separador){
 	ficheiro << separador << "\t" << "<rotate time=\"" << 35 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_TER) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_TER << "\" Y=\"" << RAIO_TER << "\" Z=\"" << RAIO_TER << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -196,9 +189,6 @@ void criaMarte(string separador){
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
 
-
-
-//	int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
 	ficheiro << separador << "\t" << "<rotate angle=\"" << 25 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
 	separador = separador + "\t";
 	ficheiro << separador << "<group>" << endl;
@@ -206,9 +196,7 @@ void criaMarte(string separador){
 //Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 37 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
-/*//Transformacoes geometricas
-	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
-*/	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_MAR) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
+//Transformacoes geometricas
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_MAR << "\" Y=\"" << RAIO_MAR << "\" Z=\"" << RAIO_MAR << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -307,7 +295,6 @@ void criaJupiter(string separador){
 	ficheiro << separador << "\t" << "<rotate time=\"" << 30 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_JUP) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_JUP << "\" Y=\"" << RAIO_JUP << "\" Z=\"" << RAIO_JUP << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -362,11 +349,6 @@ void criaSaturno(string separador){
 	separador = separador + "\t";
 	ficheiro << separador << "<group>" << endl;
 
-//Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_SAT) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
-	//PRECISEI DE CRIAR UM NOVO GRUPO SO PARA RODAR SATURNO
-
-	ficheiro << separador << "\t" << "<rotate angle=\"" << 10 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_SAT << "\" Y=\"" << RAIO_SAT << "\" Z=\"" << RAIO_SAT << "\" />" << endl;
 
 	ficheiro << separador << "<group>" << endl;
@@ -408,18 +390,15 @@ void criaUrano(string separador){
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
 
-	ficheiro << separador << "\t" << "<rotate angle=\"" << 98 << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 1 << "\" />" << endl;
+	ficheiro << separador << "\t" << "<rotate angle=\"" << 98 << "\" axisX=\"" << 1 << "\" axisY=\"" << 0 << "\" axisZ=\"" << 0 << "\" />" << endl;
 	separador = separador + "\t";
 	ficheiro << separador << "<group>" << endl;
 
 
-	//int angulo = rand() % MAXROTACAO; //angulo de rotacao aleatorio entre 0 e 30
-//Rotação em torno de si proprio
+	//Rotação em torno de si proprio
 	ficheiro << separador << "\t" << "<rotate time=\"" << 25 << "\" axisX=\"" << 1 << "\" axisY=\"" << 0 << "\" axisZ=\"" << 0 << "\" />" << endl;
 
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_URA) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_URA << "\" Y=\"" << RAIO_URA << "\" Z=\"" << RAIO_URA << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -465,7 +444,6 @@ void criaNeptuno(string separador){
 
 //Transformacoes geometricas
 //	ficheiro << separador << "\t" << "<rotate angle=\"" << angulo << "\" axisX=\"" << 0 << "\" axisY=\"" << 1 << "\" axisZ=\"" << 0 << "\" />" << endl;
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_NEP) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
 	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_NEP << "\" Y=\"" << RAIO_NEP << "\" Z=\"" << RAIO_NEP << "\" />" << endl;
 //Modelos
 	ficheiro << separador << "\t" << "<models>" << endl;
@@ -485,9 +463,8 @@ void criaFoguetao(string separador){
 
 
 // Inicio do grupo
-	//{-1,-1,0},{-1,1,0},{1,1,0},{0,0,0},{1,-1,0}
+
 	ficheiro << separador << "<group>" << endl;
-	//ficheiro << separador << "\t" << "<translate X=\"" << DIST_FOG << "\" Y=\"0\" Z=\"0\" />" << endl;
 	ficheiro << separador << "\t" << "<translate time=\"" << 50 << "\">"  << endl;
 	
 	ficheiro << separador << "\t\t" << "<point X=\"" << DIST_FOG/2*(-1) << "\" Y=\"" << DIST_FOG/2*(-1) << "\" Z=\"" << 0 << "\" />"  << endl;
@@ -504,43 +481,33 @@ void criaFoguetao(string separador){
 	ficheiro << separador << "\t" << "<scale X=\"0.8\" Y=\"0.8\" Z=\"0.8\" />" << endl;
     ficheiro << separador << "\t<models>" << endl;
     ficheiro << separador << "\t\t<model file=\"cilindro.3d\" />" << endl;
-    //drawCylinder(raio, altura, 100);
     ficheiro << separador << "\t</models>" << endl;
-    //glPushMatrix();
     ficheiro << separador << "\t<group>" << endl;
     ficheiro << separador << "\t\t<translate X=\"0\" Y=\"1\" Z=\"0\" />" << endl;
     ficheiro << separador << "\t" << "<scale X=\"0.8\" Y=\"0.8\" Z=\"0.8\" />" << endl;
-    //glTranslatef(0, altura, 0);
     ficheiro << separador << "\t\t<models>" << endl;
     ficheiro << separador << "\t\t\t<model file=\"cone.3d\" />" << endl;
-    //drawCone(raio, altura/4, 100, 100);
     ficheiro << separador << "\t\t</models>" << endl;
     ficheiro << separador << "\t</group>" << endl;
-    //glPopMatrix();
-
+    
     int alpha = 360/4;
     for(int i = 0; i<4; i++){
-        //glPushMatrix();
         ficheiro << separador << "\t<group>" << endl;
-        //assumindo que o raio do cilindro será 1
         ficheiro << separador << "\t\t\t<translate X=\"0\" Y=\"0.25\" Z=\"0\" />" << endl;
         ficheiro << separador << "\t\t<rotate angle=\"" << i*alpha << "\" axisX=\"0\" axisY=\"1\" axisZ=\"0\" />" << endl;
-        //glTranslatef(0,raio/4,0);
-        //glRotatef(i*alpha,0,1,0);
+        
         ficheiro << separador << "\t\t<group>" << endl;
         ficheiro << separador << "\t\t\t<translate X=\"0.4\" Y=\"0\" Z=\"0\" />" << endl;
-        //glTranslatef(raio,0,0);
         ficheiro << separador << "\t\t\t<rotate angle=\"-135\" axisX=\"0\" axisY=\"0\" axisZ=\"1\" />" << endl;
-        //glRotatef(-135,0,0,1);
         ficheiro << separador << "\t" << "<scale X=\"0.3\" Y=\"0.7\" Z=\"0.3\" />" << endl;
         ficheiro << separador << "\t\t\t<models>" << endl;
         ficheiro << separador << "\t\t\t\t<model file=\"cone.3d\" />" << endl;
-        //drawCone(raio/4, altura/2, 10, 10);
         ficheiro << separador << "\t\t\t</models>" << endl;
+        
         ficheiro << separador << "\t\t</group>" << endl;
+        
         ficheiro << separador << "\t</group>" << endl;
-        //glPopMatrix();
-
+        
     }
 
     ficheiro << separador << "</group>" << endl;
@@ -555,13 +522,13 @@ void criaCometa(string separador){
 
 	ficheiro << separador << "\t\t\t<rotate angle=\"-135\" axisX=\"1\" axisY=\"0\" axisZ=\"0\" />" << endl;
 //Translaçao
-	ficheiro << separador << "\t" << "<translate time=\"" << 100 << "\">"  << endl;
+	ficheiro << separador << "\t" << "<translate time=\"" << 30 << "\">"  << endl;
 	float x,y;
 	//a = RAIO_SOL*2 + DIST_JUP + DIST_MER*3/4;
 	//b = DIST_JUP*2/3;
-	float alpha = 2*M_PI / 200;
+	float alpha = 2*M_PI / PONTOS_TRANS;
 	float raio = RAIO_SOL*2 + DIST_SAT + DIST_MER*3/4;
-	for(int i=0; i<200; i++){
+	for(int i=0; i<PONTOS_TRANS; i++){
 		//raio = a*b / ( sqrt( (a*a*sin(alpha*i)*sin(alpha*i)) + (b*b*cos(alpha*i)*cos(alpha*i)) ) );
 		x = cos(alpha*i) * raio;
 		y = sin(alpha*i) * 0.35 * raio;
@@ -569,15 +536,19 @@ void criaCometa(string separador){
 	}
 	ficheiro << separador << "\t" << "</translate>" << endl;
 //Rotação em torno de si proprio
-	
+
+	ficheiro << separador << "\t<group>" << endl;
+
+	ficheiro << separador << "\t\t<rotate angle=\"-90\" axisX=\"1\" axisY=\"0\" axisZ=\"0\" />" << endl;
+
 //Transformacoes geometricas
-	//ficheiro << separador << "\t" << "<translate X=\"" << (RAIO_SOL+DIST_JUP) << "\" Y=\"" << 0 << "\" Z=\"" << 0 << "\" />" << endl;
-	ficheiro << separador << "\t" << "<scale X=\"" << RAIO_TER << "\" Y=\"" << RAIO_TER << "\" Z=\"" << RAIO_TER << "\" />" << endl;
+	ficheiro << separador << "\t\t" << "<scale X=\"" << 0.2 << "\" Y=\"" << 0.2 << "\" Z=\"" << 0.2 << "\" />" << endl;
 //Modelos
-	ficheiro << separador << "\t" << "<models>" << endl;
-	ficheiro << separador << "\t\t" << "<model file = \"esfera.3d\"/>" << endl;
-	ficheiro << separador << "\t" << "</models>" << endl;
+	ficheiro << separador << "\t\t" << "<models>" << endl;
+	ficheiro << separador << "\t\t\t" << "<model file = \"teapot.3d\"/>" << endl;
+	ficheiro << separador << "\t\t" << "</models>" << endl;
 // Fim do grupo
+	ficheiro << separador << "\t" <<"</group>" << endl;
 	ficheiro << separador << "</group>" << endl;
 }
 
