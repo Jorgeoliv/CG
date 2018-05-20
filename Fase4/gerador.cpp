@@ -112,11 +112,11 @@ vector<Ponto*> torus(float raioTubo, float raioMaior, int fatias, int camadas, v
             nx3 = (cos(beta*(j+1)))*cos(alpha*i);
             nx4 = (cos(beta*(j+1)))*cos(alpha*(i+1));
 
-            float tx1 = (float)i / (float) fatias;
-            float ty1 = (float)j / (float) camadas;
+            float ty1 = (float)i / (float) fatias;
+            float tx1 = (float)j / (float) camadas;
 
-            float tx2 = (float)(i+1) / (float) fatias;
-            float ty2 = (float)(j+1) / (float) camadas;
+            float ty2 = (float)(i+1) / (float) fatias;
+            float tx2 = (float)(j+1) / (float) camadas;
             
             Ponto* n;
             //glBegin(GL_TRIANGLES);
