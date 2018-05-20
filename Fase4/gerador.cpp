@@ -200,63 +200,63 @@ vector<Ponto*> cilindro(float radius, float height, int slices,vector<Ponto*> *n
         pontos.push_back(p);
             //glVertex3f(0,0,0);
         (*normais).push_back(new Ponto(0,-1,0));
-        (*texturas).push_back(new Ponto(0.1875 * cos( i * alpha) + 0.4375,0,0.1875 * sin( i * alpha) + 0.1875));
+        (*texturas).push_back(new Ponto(0.1875 * cos( (i+1) * alpha) + 0.4375,0.1875 * sin( (i+1) * alpha) + 0.1875,0));
         p = new Ponto(pxD,0,pzD);
         pontos.push_back(p);
             //glVertex3f(pxD, 0, pzD);
         (*normais).push_back(new Ponto(0,-1,0));
-        (*texturas).push_back(new Ponto(0.1875 * cos( (i+1) * alpha) + 0.4375,0,0.1875 * sin( (i+1) * alpha) + 0.1875));
+        (*texturas).push_back(new Ponto(0.1875 * cos( (i) * alpha) + 0.4375,0.1875 * sin( (i) * alpha) + 0.1875,0));
         p = new Ponto(pxA,0,pzA);
         pontos.push_back(p);
             //glVertex3f(pxA, 0, pzA);
 
         //----------------------------
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx2,0,1));
+        (*texturas).push_back(new Ponto(tx2,1,0));
         p = new Ponto(pxD,0,pzD);
         pontos.push_back(p);    
             //glVertex3f(pxD, 0, pzD);
 
-        (*normais).push_back(new Ponto(sin((i)*alpha),0,cos((i)*alpha)));
-        (*texturas).push_back(new Ponto(tx1,0,1));
+        (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
+        (*texturas).push_back(new Ponto(tx2,1,0));
         p = new Ponto(pxD,height,pzD);
         pontos.push_back(p);
             //glVertex3f(pxD, height, pzD);
 
         (*normais).push_back(new Ponto(sin((i)*alpha),0,cos((i)*alpha)));
-        (*texturas).push_back(new Ponto(tx1,0,0.375));
+        (*texturas).push_back(new Ponto(tx1,0.375,0));
         p = new Ponto(pxA,0,pzA);
         pontos.push_back(p);
             //glVertex3f(pxA, 0, pzA);
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx2,0,0.375));
+        (*texturas).push_back(new Ponto(tx1,0.375,0));
         p = new Ponto(pxA,0,pzA);
         pontos.push_back(p);
             //glVertex3f(pxA, 0, pzA);
 
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx2,0,1));
+        (*texturas).push_back(new Ponto(tx2,1,0));
         p = new Ponto(pxD,height,pzD);
         pontos.push_back(p);
             //glVertex3f(pxD, height, pzD);
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx2,0,0.375));
+        (*texturas).push_back(new Ponto(tx1,0.375,0));
         p = new Ponto(pxA,height,pzA);
         pontos.push_back(p);
             //glVertex3f(pxA, height, pzA);
         //-----------------------------
         (*normais).push_back(new Ponto(0,1,0));
-        (*texturas).push_back(new Ponto(0.8125,0,0.1875));
+        (*texturas).push_back(new Ponto(0.8125,0.1875,0));
         p = new Ponto(0,height,0);
         pontos.push_back(p);
             //glVertex3f(0, height, 0);
         (*normais).push_back(new Ponto(0,1,0));
-        (*texturas).push_back(new Ponto(0.1875 * cos( (i+1) * alpha) + 0.8125,0,0.1875 * sin( (i+1) * alpha) + 0.1875));
+        (*texturas).push_back(new Ponto(0.1875 * cos( (i+1) * alpha) + 0.8125,0.1875 * sin( (i+1) * alpha) + 0.1875,0));
         p = new Ponto(pxA,height,pzA);
         pontos.push_back(p);
             //glVertex3f(pxA, height, pzA);
         (*normais).push_back(new Ponto(0,1,0));
-        (*texturas).push_back(new Ponto(0.1875 * cos( (i) * alpha) + 0.8125,0,0.1875 * sin( (i) * alpha) + 0.1875));
+        (*texturas).push_back(new Ponto(0.1875 * cos( (i) * alpha) + 0.8125,0.1875 * sin( (i) * alpha) + 0.1875,0));
         p = new Ponto(pxD,height,pzD);
         pontos.push_back(p);
             //glVertex3f(pxD, height, pzD);
