@@ -184,13 +184,14 @@ vector<Ponto*> cilindro(float radius, float height, int slices,vector<Ponto*> *n
   float tx1,tx2;
     for(int i=0; i<slices;i++){
 
+    	float iaux = (float) i;
         pxA = radius * sin(alpha*i);
         pxD = radius * sin(alpha*(i+1));
         pzA = radius * cos(alpha*i);
         pzD = radius * cos(alpha*(i+1));
 
-        tx1 = ((float)(i)/lados);
-        tx2 = ((float)(i+1)/lados);
+        tx1 = (iaux /lados);
+        tx2 = (iaux/lados);
 
         //glBegin(GL_TRIANGLES);
         (*normais).push_back(new Ponto(0,-1,0));
@@ -638,10 +639,10 @@ vector<Ponto*> esfera(float raio, int fatias, int camadas, vector<Ponto*>* norma
 
             float tx1 = (float)i / (float) fatias;
             float ty1 = (float)j / (float) camadas;
-
+            ty1=1-ty1;
             float tx2 = (float)(i+1) / (float) fatias;
             float ty2 = (float)(j+1) / (float) camadas;
-
+            ty2=1-ty2;
             Ponto *p = new Ponto(x4, y2, z4);
             Ponto *p1 = new Ponto(x4/raio,y2/raio,z4/raio);
             Ponto *p2 = new Ponto(tx2,ty2,0);
