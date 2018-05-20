@@ -215,34 +215,37 @@ vector<Ponto*> cilindro(float radius, float height, int slices,vector<Ponto*> *n
         (*texturas).push_back(new Ponto(tx2,1,0));
         p = new Ponto(pxD,0,pzD);
         pontos.push_back(p);    
-            //glVertex3f(pxD, 0, pzD);
+            //glVertex3f(pxD, 0, pzD); //1
 
-        (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx2,1,0));
-        p = new Ponto(pxD,height,pzD);
-        pontos.push_back(p);
-            //glVertex3f(pxD, height, pzD);
+        (*normais).push_back(new Ponto(sin((i)*alpha),0,cos((i)*alpha)));
+        (*texturas).push_back(new Ponto(tx1,1,0));
+        p = new Ponto(pxA,0,pzA);
+        pontos.push_back(p); //2
+
 
         (*normais).push_back(new Ponto(sin((i)*alpha),0,cos((i)*alpha)));
         (*texturas).push_back(new Ponto(tx1,0.375,0));
         p = new Ponto(pxA,0,pzA);
-        pontos.push_back(p);
-            //glVertex3f(pxA, 0, pzA);
+        pontos.push_back(p);//3
+
+
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
         (*texturas).push_back(new Ponto(tx2,0.375,0));
-        p = new Ponto(pxA,0,pzA);
-        pontos.push_back(p);
-            //glVertex3f(pxA, 0, pzA);
+        p = new Ponto(pxD,height,pzD);
+        pontos.push_back(p); //4
+ 
 
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
         (*texturas).push_back(new Ponto(tx2,1,0));
         p = new Ponto(pxD,height,pzD);
-        pontos.push_back(p);
+        pontos.push_back(p);//5
+
+
             //glVertex3f(pxD, height, pzD);
-        (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
+        (*normais).push_back(new Ponto(sin((i)*alpha),0,cos((i)*alpha)));
         (*texturas).push_back(new Ponto(tx1,0.375,0));
         p = new Ponto(pxA,height,pzA);
-        pontos.push_back(p);
+        pontos.push_back(p);// 6
             //glVertex3f(pxA, height, pzA);
         //-----------------------------
         (*normais).push_back(new Ponto(0,1,0));
