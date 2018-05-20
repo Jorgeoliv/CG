@@ -191,7 +191,7 @@ vector<Ponto*> cilindro(float radius, float height, int slices,vector<Ponto*> *n
         pzD = radius * cos(alpha*(i+1));
 
         tx1 = (iaux /lados);
-        tx2 = (iaux/lados);
+        tx2 = ((iaux+1)/lados);
 
         //glBegin(GL_TRIANGLES);
         (*normais).push_back(new Ponto(0,-1,0));
