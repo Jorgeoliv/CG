@@ -120,7 +120,7 @@ vector<Ponto*> torus(float raioTubo, float raioMaior, int fatias, int camadas, v
             
             Ponto* n;
             //glBegin(GL_TRIANGLES);
-            (*texturas).push_back(new Ponto(tx1,0,ty1));
+            (*texturas).push_back(new Ponto(tx1,ty1,0));
             p = new Ponto(x1,y1,z1);
             n = new Ponto(nx1,ny1,nz1);
             pontos.push_back(p);
@@ -128,35 +128,35 @@ vector<Ponto*> torus(float raioTubo, float raioMaior, int fatias, int camadas, v
 
 
                 //glVertex3f(x1, y1, z1);
-            (*texturas).push_back(new Ponto(tx2,0,ty1));
+            (*texturas).push_back(new Ponto(tx2,ty1,0));
             p = new Ponto(x2,y2,z1);
             n = new Ponto(nx2,ny2,nz1);
             pontos.push_back(p);
             (*normais).push_back(n);
                 //glVertex3f(x2, y2, z1);
 
-            (*texturas).push_back(new Ponto(tx1,0,ty2));
+            (*texturas).push_back(new Ponto(tx1,ty2,0));
             p = new Ponto(x3,y3,z2);
             n = new Ponto(nx3,ny3,nz2);
             pontos.push_back(p);
             (*normais).push_back(n);
                 //glVertex3f(x3, y3, z2);
 
-            (*texturas).push_back(new Ponto(tx1,0,ty2));
+            (*texturas).push_back(new Ponto(tx1,ty2,0));
             p = new Ponto(x3,y3,z2);
             n = new Ponto(nx3,ny3,nz2);
             pontos.push_back(p);
             (*normais).push_back(n);
                 //glVertex3f(x3, y3, z2);
 
-            (*texturas).push_back(new Ponto(tx2,0,ty1));
+            (*texturas).push_back(new Ponto(tx2,ty1,0));
             p = new Ponto(x2,y2,z1);
             n = new Ponto(nx2,ny2,nz1);
             pontos.push_back(p);
             (*normais).push_back(n);
                 //glVertex3f(x2, y2, z1);
 
-            (*texturas).push_back(new Ponto(tx2,0,ty2));
+            (*texturas).push_back(new Ponto(tx2,ty2,0));
             p = new Ponto(x4,y4,z2);
             n = new Ponto(nx4,ny4,nz2);
             pontos.push_back(p);
@@ -229,7 +229,7 @@ vector<Ponto*> cilindro(float radius, float height, int slices,vector<Ponto*> *n
         pontos.push_back(p);
             //glVertex3f(pxA, 0, pzA);
         (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx1,0.375,0));
+        (*texturas).push_back(new Ponto(tx2,0.375,0));
         p = new Ponto(pxA,0,pzA);
         pontos.push_back(p);
             //glVertex3f(pxA, 0, pzA);
