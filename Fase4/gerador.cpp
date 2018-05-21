@@ -233,7 +233,7 @@ vector<Ponto*> cilindro(float radius, float height, int slices,vector<Ponto*> *n
         pontos.push_back(p);
         //5
          (*normais).push_back(new Ponto(sin((i+1)*alpha),0,cos((i+1)*alpha)));
-        (*texturas).push_back(new Ponto(tx2,0.375f,0));
+        (*texturas).push_back(new Ponto(tx2,1,0));
         p = new Ponto(radius*sin((i+1)*alpha),height,radius*cos((i+1)*alpha));
         pontos.push_back(p);
 
@@ -281,21 +281,21 @@ vector<Ponto*> caixa(float sideX, float sideY, float sideZ, int divisions, vecto
     const float maxY = sideY/2, minY = -maxY;       // valor máximo/mínimo que a variável em Y pode tomar
     const float maxZ = sideZ/2, minZ = -maxZ; 
 
-    float texturaX = 0.25f;
-    float texturaY = (1.0f/3.0f);
+    float texturaX = (2*sideX) + (2*sideZ);
+    float texturaY = (2*sideZ) + (sideY);
 
 
-    float xText1 = 0.25f;
+    float xText1 = sideZ/texturaX; 
     //float xText2 = (sideX+sideZ)/texturaX;
-    float xText3 = 0.75f;
+    float xText3 = (2*sideZ+sideX)/texturaX;
 
-    float yText1 = (1.0f/3.0f);
-    float yText2 = (1.0f/3.0f);
+    float yText1 = sideZ/texturaY;
+    float yText2 = (sideY+sideZ)/texturaY;
 
-    float deltaXText = (texturaX)/(float)divisions; 
-    float deltaYText = (texturaY)/(float)divisions;
-    float deltaZText1 = (texturaX)/(float)divisions; 
-    float deltaZText2 = (texturaY)/(float)divisions; 
+    float deltaXText = (sideX/texturaX)/(float)divisions; 
+    float deltaYText = (sideY/texturaY)/(float)divisions;
+    float deltaZText1 = (sideZ/texturaX)/(float)divisions; 
+    float deltaZText2 = (sideZ/texturaY)/(float)divisions;  
 
     Ponto* nX1 = new Ponto(1,0,0);
     Ponto* nX2 = new Ponto(-1,0,0);
