@@ -282,21 +282,21 @@ vector<Ponto*> caixa(float sideX, float sideY, float sideZ, int divisions, vecto
     const float maxY = sideY/2, minY = -maxY;       // valor máximo/mínimo que a variável em Y pode tomar
     const float maxZ = sideZ/2, minZ = -maxZ; 
 
-    float texturaX = (2*sideX) + (2*sideZ);
-    float texturaY = (2*sideZ) + (sideY);
+    float texturaX = 0.25f;
+    float texturaY = (1.0f/3.0f);
 
 
-    float xText1 = sideZ/texturaX; 
+    float xText1 = 0.25f;
     //float xText2 = (sideX+sideZ)/texturaX;
-    float xText3 = (2*sideZ+sideX)/texturaX;
+    float xText3 = 0.75f;
 
-    float yText1 = sideZ/texturaY;
-    float yText2 = (sideY+sideZ)/texturaY;
+    float yText1 = (1.0f/3.0f);
+    float yText2 = (1.0f/3.0f);
 
-    float deltaXText = (sideX/texturaX)/(float)divisions; 
-    float deltaYText = (sideY/texturaY)/(float)divisions;
-    float deltaZText1 = (sideZ/texturaX)/(float)divisions; 
-    float deltaZText2 = (sideZ/texturaY)/(float)divisions;  
+    float deltaXText = (texturaX)/(float)divisions; 
+    float deltaYText = (texturaY)/(float)divisions;
+    float deltaZText1 = (texturaX)/(float)divisions; 
+    float deltaZText2 = (texturaY)/(float)divisions; 
 
     Ponto* nX1 = new Ponto(1,0,0);
     Ponto* nX2 = new Ponto(-1,0,0);
